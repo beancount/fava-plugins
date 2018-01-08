@@ -1,0 +1,11 @@
+/.cache
+/.coverage
+/.tox
+/dist
+/build
+/fava_plugins.egg-info
+/venv
+
+*.pyc
+.DS_Store
+TODO
