@@ -1,15 +1,6 @@
 # fava-plugins
+
 a collection of Beancount plugins
 
-### Display 'todo'-metadata-entries as errors
-
-When enabling the `todo_as_error`-plugin, transactions with the
-`todo`-metadata-key will be added as Beancount errors, displaying the value of
-the `todo`-metadata-entry as the error description.
-
-    plugin "fava_plugins.todo_as_error"
-
-    2017-12-27 * "" "Groceries"
-      todo: "Put the milk into the fridge"
-      Expenses:Groceries   150.00 USD
-      Assets:Cash
+- [`split_income`](https://github.com/beancount/fava-plugins/blob/master/fava_plugins/split_income.py): Split income transactions into pre-tax and post-tax postings.
+- [`todo_as_error`](https://github.com/beancount/fava-plugins/blob/master/fava_plugins/todo_as_error.py): Display 'todo'-metadata-entries as errors.
