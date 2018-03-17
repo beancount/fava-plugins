@@ -25,7 +25,8 @@ def test_split_income(load_doc):
 
     entries, errors, __ = load_doc
 
-    entries_after, _, __ = load_string("""
+    entries_after, _, __ = load_string(
+        """
     2018-01-31 * "Employer" "Income"
         Income:Net:Work               -800.00 EUR
         Income:Net:Work:Bonus         -100.00 EUR
@@ -38,7 +39,8 @@ def test_split_income(load_doc):
         Expenses:Taxes:Extra            20.00 EUR
         Income:Net:Work                800.00 EUR
         Income:Net:Work:Bonus          100.00 EUR
-    """, dedent=True)
+    """,
+        dedent=True)
 
     assert not errors
     assert 'pretax' in entries[8].tags
@@ -70,7 +72,8 @@ def test_split_income_config(load_doc):
 
     entries, errors, __ = load_doc
 
-    entries_after, _, __ = load_string("""
+    entries_after, _, __ = load_string(
+        """
     2018-01-31 * "Employer" "Income"
         Income:Net-Income             -800.00 EUR
         Income:Net-Income:Bonus       -100.00 EUR
@@ -83,7 +86,8 @@ def test_split_income_config(load_doc):
         Expenses:Taxes:Extra            20.00 EUR
         Income:Net-Income              800.00 EUR
         Income:Net-Income:Bonus        100.00 EUR
-    """, dedent=True)
+    """,
+        dedent=True)
 
     assert not errors
     assert 'brutto' in entries[8].tags

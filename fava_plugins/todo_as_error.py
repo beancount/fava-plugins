@@ -16,7 +16,9 @@ import collections
 
 from beancount.core.data import Transaction
 
-__plugins__ = ['todo_as_error', ]
+__plugins__ = [
+    'todo_as_error',
+]
 
 TodoError = collections.namedtuple('TodoError', 'source message entry')
 
