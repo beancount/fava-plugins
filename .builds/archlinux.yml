@@ -1,9 +1,0 @@
-image: archlinux
-packages:
-  - python
-  - python-tox
-sources:
-  - https://github.com/beancount/fava-plugins
-tasks:
-  - test: |
-      make -C fava-plugins test
