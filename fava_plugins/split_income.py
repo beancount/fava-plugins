@@ -67,7 +67,7 @@ SplitIncomeError = collections.namedtuple('SplitIncomeError',
 
 def split_income(entries, options_map, config_str):
     """Split income transactions."""
-    # pylint: disable=not-callable,too-many-locals
+    # pylint: disable=too-many-locals
 
     errors = []
     new_entries = []
@@ -87,7 +87,7 @@ def split_income(entries, options_map, config_str):
             errors.append(
                 SplitIncomeError(
                     data.new_metadata(options_map['filename'], 0),
-                    "Syntax error in config: {}".format(config_str), None))
+                    f"Syntax error in config: {config_str}", None))
             return entries, errors
 
     for entry in entries:

@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 79
+
+[tool.pylint.'MESSAGES CONTROL']
+disable = [
+    "too-few-public-methods",
+    "not-callable",        # false positive for Beancount Entries
+    "isinstance-second-argument-not-valid-type"
+]

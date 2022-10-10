@@ -25,6 +25,7 @@ TodoError = collections.namedtuple('TodoError', 'source message entry')
 
 def todo_as_error(entries, _):
     """Create errors for entries 'todo' metadata."""
+
     errors = []
 
     for entry in entries:
