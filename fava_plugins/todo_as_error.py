@@ -11,16 +11,15 @@ the `todo`-metadata-entry as the error description.
       Expenses:Groceries   150.00 USD
       Assets:Cash
 """
-
 import collections
 
 from beancount.core.data import Transaction
 
 __plugins__ = [
-    'todo_as_error',
+    "todo_as_error",
 ]
 
-TodoError = collections.namedtuple('TodoError', 'source message entry')
+TodoError = collections.namedtuple("TodoError", "source message entry")
 
 
 def todo_as_error(entries, _):
@@ -29,7 +28,7 @@ def todo_as_error(entries, _):
     errors = []
 
     for entry in entries:
-        if isinstance(entry, Transaction) and 'todo' in entry.meta:
-            errors.append(TodoError(entry.meta, entry.meta['todo'], entry))
+        if isinstance(entry, Transaction) and "todo" in entry.meta:
+            errors.append(TodoError(entry.meta, entry.meta["todo"], entry))
 
     return entries, errors

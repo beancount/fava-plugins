@@ -40,10 +40,11 @@ def test_split_income(load_doc):
         Income:Net:Work                800.00 EUR
         Income:Net:Work:Bonus          100.00 EUR
     """,
-        dedent=True)
+        dedent=True,
+    )
 
     assert not errors
-    assert 'pretax' in entries[8].tags
+    assert "pretax" in entries[8].tags
 
     _compare_postings(entries[8], entries_after[1])
     _compare_postings(entries[7], entries_after[0])
@@ -87,10 +88,11 @@ def test_split_income_config(load_doc):
         Income:Net-Income              800.00 EUR
         Income:Net-Income:Bonus        100.00 EUR
     """,
-        dedent=True)
+        dedent=True,
+    )
 
     assert not errors
-    assert 'brutto' in entries[8].tags
+    assert "brutto" in entries[8].tags
 
     _compare_postings(entries[8], entries_after[1])
     _compare_postings(entries[7], entries_after[0])

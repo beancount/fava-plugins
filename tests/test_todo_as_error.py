@@ -15,4 +15,4 @@ def test_todo_as_error(load_doc):
 
     assert len(errors) == 1
     assert isinstance(errors[0], TodoError)
-    assert errors[0].message == 'This will become an error'
+    assert errors[0].message == "This will become an error"

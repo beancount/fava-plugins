@@ -1,5 +1,4 @@
 import pytest
-
 from beancount.loader import load_string
 
 
