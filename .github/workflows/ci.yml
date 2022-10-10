@@ -1,0 +1,23 @@
+name: ci
+on:
+  push:
+jobs:
+  test:
+    name: Run lint and tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Dependencies
+      run: pip install tox wheel setuptools
+    - name: Run lint
+      run: tox -e lint
+    - name: Run tests
+      run: tox -e py
