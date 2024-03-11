@@ -5,7 +5,7 @@ transactions. The pre-tax transaction will be tagged, allowing you to filter
 them out, leaving you only with your net income. The plugin can be configured
 as follows:
 
-    plugin "fava-plugins.split_income" "{
+    plugin "fava_plugins.split_income" "{
         'income': 'Income:Work',
         'net_income': 'Income:Net',
         'taxes': 'Expenses:Taxes',
