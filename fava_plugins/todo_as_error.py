@@ -11,6 +11,7 @@ the `todo`-metadata-entry as the error description.
       Expenses:Groceries   150.00 USD
       Assets:Cash
 """
+
 import collections
 
 from beancount.core.data import Transaction

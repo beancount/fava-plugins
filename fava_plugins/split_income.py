@@ -49,6 +49,7 @@ into
         Income:Net                     800.00 EUR
         Income:Net:Bonus               100.00 EUR
 """
+
 import ast
 import collections
 import copy

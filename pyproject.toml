@@ -1,13 +1,44 @@
+[project]
+name = "fava-plugins"
+version = "1.0"
+description = "A collection of Beancount plugins."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT License"}
+authors = [
+  {name = "Jakob Schnitzer", email = "mail@jakobschnitzer.de"}
+]
+keywords = ["fava", "beancount", "accounting",]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Education",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Financial :: Accounting",
+    "Topic :: Office/Business :: Financial :: Investment",
+]
+dependencies = [
+    "beancount>=2,<4",
+]
+
+[project.urls]
+Homepage = "https://github.com/beancount/fava-plugins"
+Source = "https://github.com/beancount/fava-plugins"
+Issues = "https://github.com/beancount/fava-plugins/issues"
+
 [build-system]
 requires = ["setuptools>=45", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.black]
+[tool.ruff]
+target-version = "py39"
 line-length = 79
-
-[tool.pylint.'MESSAGES CONTROL']
-disable = [
-    "too-few-public-methods",
-    "not-callable",        # false positive for Beancount Entries
-    "isinstance-second-argument-not-valid-type"
-]
