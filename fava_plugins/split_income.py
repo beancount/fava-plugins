@@ -54,6 +54,7 @@ import collections
 import copy
 import re
 
+from beancount.core import convert
 from beancount.core import data
 from beancount.core import getters
 from beancount.core.inventory import Inventory
@@ -112,14 +113,15 @@ def split_income(entries, options_map, config_str):
         income = collections.defaultdict(Inventory)
         taxes = collections.defaultdict(Decimal)
         for posting in list(entry.postings):
+            weight = convert.get_weight(posting)
             if posting.account.startswith(config["income"]):
                 new_entry.postings.append(posting)
                 entry.postings.remove(posting)
-                income[posting.account].add_amount(posting.units)
+                income[posting.account].add_amount(weight)
             elif re.match(config["taxes"], posting.account):
                 new_entry.postings.append(posting)
                 entry.postings.remove(posting)
-                taxes[posting.units.currency] += posting.units.number
+                taxes[weight.currency] += weight.number
 
         for account, inv in income.items():
             net_account = account.replace(
