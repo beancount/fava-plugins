@@ -1,6 +1,6 @@
 [project]
 name = "fava-plugins"
-version = "1.0"
+version = "1.1"
 description = "A collection of Beancount plugins."
 readme = "README.md"
 requires-python = ">=3.9"
