@@ -18,13 +18,14 @@ lint:
 dist:
 	rm -f dist/*.tar.gz
 	rm -f dist/*.whl
-	python -m build
+	uv build
 	twine check dist/*
 
 # Update the lock file.
 .PHONY: update
 update:
 	uv lock --upgrade
+	uvx gha-update
 	uv run pre-commit autoupdate
 
 # Upload the distribution

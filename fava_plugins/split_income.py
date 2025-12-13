@@ -58,6 +58,7 @@ import copy
 import re
 from decimal import Decimal
 from typing import Any
+from typing import NamedTuple
 from typing import TYPE_CHECKING
 
 from beancount.core import convert
@@ -67,13 +68,18 @@ from beancount.core.inventory import Inventory
 
 if TYPE_CHECKING:
     from beancount.core.data import Directive
+    from beancount.core.data import Meta
 
 __plugins__ = ("split_income",)
 
-SplitIncomeError = collections.namedtuple(
-    "SplitIncomeError",
-    "source message entry",
-)
+
+class SplitIncomeError(NamedTuple):
+    """Error from the split_income plugin."""
+
+    source: Meta
+    message: str
+    entry: Directive | None = None
+
 
 ZERO = Decimal()
 
@@ -82,7 +88,6 @@ def split_income(
     entries: list[Directive], options_map: Any, config_str: str
 ) -> tuple[list[Directive], list[SplitIncomeError]]:
     """Split income transactions."""
-
     errors = []
     new_entries: list[Directive] = []
     new_accounts = set()
@@ -102,7 +107,6 @@ def split_income(
                 SplitIncomeError(
                     data.new_metadata(options_map["filename"], 0),
                     f"Syntax error in config: {config_str}",
-                    None,
                 ),
             )
             return entries, errors

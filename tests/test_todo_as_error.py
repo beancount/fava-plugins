@@ -23,4 +23,4 @@ def test_todo_as_error(load_doc: LoaderResult) -> None:
     assert len(errors) == 1
     error = errors[0]
     assert isinstance(error, TodoError)
-    assert error.message == "This will become an error"  # type: ignore[attr-defined]
+    assert error.message == "This will become an error"

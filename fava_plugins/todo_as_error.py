@@ -14,20 +14,27 @@ the `todo`-metadata-entry as the error description.
 
 from __future__ import annotations
 
-import collections
 from typing import Any
+from typing import NamedTuple
 from typing import TYPE_CHECKING
 
 from beancount.core.data import Transaction
 
 if TYPE_CHECKING:
     from beancount.core.data import Directive
+    from beancount.core.data import Meta
 
 __plugins__ = [
     "todo_as_error",
 ]
 
-TodoError = collections.namedtuple("TodoError", "source message entry")
+
+class TodoError(NamedTuple):
+    """Error from the split_income plugin."""
+
+    source: Meta
+    message: str
+    entry: Directive
 
 
 def todo_as_error(
@@ -35,10 +42,10 @@ def todo_as_error(
     _: Any,
 ) -> tuple[list[Directive], list[TodoError]]:
     """Create errors for entries 'todo' metadata."""
-    errors = []
-
-    for entry in entries:
-        if isinstance(entry, Transaction) and "todo" in entry.meta:
-            errors.append(TodoError(entry.meta, entry.meta["todo"], entry))
+    errors = [
+        TodoError(entry.meta, entry.meta["todo"], entry)
+        for entry in entries
+        if isinstance(entry, Transaction) and "todo" in entry.meta
+    ]
 
     return entries, errors
