@@ -92,7 +92,7 @@ wheels = [
 
 [[package]]
 name = "fava-plugins"
-version = "1.0"
+version = "1.2"
 source = { editable = "." }
 dependencies = [
     { name = "beancount" },
